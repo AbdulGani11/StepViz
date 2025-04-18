@@ -72,7 +72,7 @@ A Python code visualization tool that allows you to step through algorithm execu
 
 - [Python Tutor](https://pythontutor.com/) for inspiration
 - [Pyodide](https://pyodide.org/) for Python in the browser capabilities
-- [DeepSeek AI](https://deepseek.ai/) for algorithm analysis capabilities
+-[DeepSeekAI](https://www.deepseek.com/en) for algorithm analysis capabilities
 
 ## Screenshots
 

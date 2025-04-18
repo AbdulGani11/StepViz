@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables for consistent theming */
+:root {
+  --primary-blue: #3b82f6;
+  --primary-blue-alpha: rgba(59, 130, 246, 0.5);
+  --light-gray: #e5e7eb;
+  --scrollbar-track: #f1f1f1;
+  --scrollbar-thumb: #c1c1c1;
+  --scrollbar-thumb-hover: #a1a1a1;
+  --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-duration: 300ms;
+}
+
+/* Smoother transitions for all elements */
+.transition-all {
+  transition-property: transform, opacity, background-color, border-color,
+    color, box-shadow;
+  transition-timing-function: var(--transition-timing);
+  transition-duration: var(--transition-duration);
+}
+
+/* Highlight transition for code execution */
+.highlight-transition {
+  transition:
+    background-color var(--transition-duration) ease,
+    border-color var(--transition-duration) ease,
+    color var(--transition-duration) ease;
+}
+
+/* Animation for code execution */
+@keyframes pulse-arrow {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+.arrow-pulse {
+  animation: pulse-arrow 1.5s infinite;
+}
+
+/* Fade in animation for new UI elements */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Memory object highlight animation */
+@keyframes highlight-object {
+  0% {
+    box-shadow: 0 0 0 0 var(--primary-blue-alpha);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+.highlight-object {
+  animation: highlight-object 1s ease-out;
+  will-change: box-shadow;
+}
+
+/* Visualization controls hover effects */
+.viz-control {
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.viz-control:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.viz-control:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Timeline slider styling */
+.timeline-slider {
+  height: 4px;
+  border-radius: 2px;
+  outline: none;
+  -webkit-appearance: none;
+  background: linear-gradient(
+    to right,
+    var(--primary-blue) 0%,
+    var(--primary-blue) var(--progress, 0%),
+    var(--light-gray) var(--progress, 0%),
+    var(--light-gray) 100%
+  );
+}
+
+.timeline-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--primary-blue);
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+}
+
+.timeline-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--primary-blue);
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+}
+
+.timeline-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Scrollbar Styling - grouped together */
+/* Always show scrollbars where needed */
+.force-scroll {
+  overflow-y: scroll !important;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbars for Webkit browsers */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* Code display areas */
+.code-display-area {
+  height: 100%;
+  max-height: 100%;
+  overflow-y: scroll !important;
+  overflow-x: auto !important;
+  display: block !important;
+}
+
+.code-content {
+  min-width: 100%;
+  width: max-content;
+}
+
+/* Add responsive adjustments for small screens */
+@media (max-width: 640px) {
+  .timeline-slider::-webkit-slider-thumb,
+  .timeline-slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+}

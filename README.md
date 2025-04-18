@@ -62,10 +62,6 @@ A Python code visualization tool that allows you to step through algorithm execu
 3. Use the controls to step through execution
 4. Expand the "Algorithm Explanation" panel for AI-generated explanations
 
-## License
-
-MIT
-
 ## Troubleshooting
 
 - **Visualization not rendering**: Make sure you have JavaScript enabled and are using a modern browser
